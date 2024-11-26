@@ -9,24 +9,34 @@ public class AttendanceChecker {
         final int WAGE_PER_HOUR = 20;
 
         // Generate a random number: 0 or 1
-        int randomValue = random.nextInt(3); // 0 or 1
         int workHours = 0;
-        String attendance;
-        if (randomValue == 0) {
-            attendance = "Absent";
-            workHours = 0;
-        } else if (randomValue == 1) {
-            attendance = "Part-Time";
-            workHours = PART_TIME_HOURS;
-        } else {
-            attendance = "Full-Time";
-            workHours = FULL_TIME_HOURS;
+        int attendance=random.nextInt(3);
+        switch(attendance){
+            case 0:
+                System.out.println("Employee is Absent.");
+                workHours=0;
+                break;
+            case 1:
+                System.out.println("Employee is Part-Time.");
+                workHours = PART_TIME_HOURS;
+                break;
+
+            case 2:
+                System.out.println("Employee is Full-Time.");
+                workHours = FULL_TIME_HOURS;
+                break;
+
+            default:
+                System.out.println("Invalid attendance status.");
+                workHours = 0;
+                break;
+
+
         }
 
         int dailyWage = workHours * WAGE_PER_HOUR;
 
 
-        System.out.println("Employee is " + attendance);
         System.out.println("Daily Wage: $" + dailyWage);
     }
 }
