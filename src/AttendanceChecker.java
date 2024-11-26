@@ -7,36 +7,49 @@ public class AttendanceChecker {
         final int FULL_TIME_HOURS = 12;
         final int PART_TIME_HOURS = 8;
         final int WAGE_PER_HOUR = 20;
+        final int WORKING_DAYS=20;
 
-        // Generate a random number: 0 or 1
+        int totalMonthlyWage = 0;
+        System.out.println("Daily Wage Details:");
+
+        for (int day = 1; day <= WORKING_DAYS; day++) {
+
         int workHours = 0;
         int attendance=random.nextInt(3);
+            String attendanceStatus;
+
         switch(attendance){
             case 0:
-                System.out.println("Employee is Absent.");
+                attendanceStatus="Absent";
                 workHours=0;
                 break;
             case 1:
-                System.out.println("Employee is Part-Time.");
+                attendanceStatus="Part-Time";
                 workHours = PART_TIME_HOURS;
                 break;
 
             case 2:
-                System.out.println("Employee is Full-Time.");
+                attendanceStatus=" Full-Time";
                 workHours = FULL_TIME_HOURS;
                 break;
 
             default:
-                System.out.println("Invalid attendance status.");
+                attendanceStatus="Unknown";
                 workHours = 0;
                 break;
 
 
         }
+            int dailyWage = workHours * WAGE_PER_HOUR;
+            totalMonthlyWage += dailyWage;
 
-        int dailyWage = workHours * WAGE_PER_HOUR;
+            System.out.println("Day " + day + ": " + attendanceStatus + " - Daily Wage: $" + dailyWage);
+        }
 
 
-        System.out.println("Daily Wage: $" + dailyWage);
+
+
+            System.out.println("\nTotal Monthly Wage: $" + totalMonthlyWage);
+
     }
 }
